@@ -16,6 +16,11 @@
     "noImplicitAny": true,
     "strictBindCallApply": true,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "services/*": ["./src/services/*"],
+      "modules/*": ["./src/modules/*"],
+      "controllers/*": ["./src/controllers/*"]
+    }
   }
 }
