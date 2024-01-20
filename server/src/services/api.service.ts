@@ -21,4 +21,16 @@ export class ApiService {
     await this.cacheManager.set('competitions', response.data, ONE_MIN_MS);
     return response.data;
   }
+
+  async getCompetitionStandings(id: string): Promise<Record<string, unknown>> {
+    const cachedRes = await this.cacheManager.get(`standings-${id}`);
+    if (cachedRes) {
+      return cachedRes as Record<string, unknown>;
+    }
+    const response = await this.http.axiosRef.get(
+      `/competitions/${id}/standings`,
+    );
+    await this.cacheManager.set(`standings-${id}`, response.data, ONE_MIN_MS);
+    return response.data;
+  }
 }
