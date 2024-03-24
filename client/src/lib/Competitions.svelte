@@ -48,7 +48,7 @@
     });
 </script>
 
-<div>
+<div class="competitions-list-container">
     {#if loading}
         <p>Loading...</p>
     {/if}
@@ -59,8 +59,8 @@
                 alt="{competition.name} emblem"
                 class="competition-emblem"
             />
-            <p>{competition.name}</p>
-        </div>
+            <p class="competition-name">{competition.name}</p>
+        </button>
     {/each}
     {#if !loading && !competitions.length}
         <p>No competitions found.</p>
@@ -68,21 +68,38 @@
 </div>
 
 <style>
+    .competitions-list-container {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
     .competition-container {
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 10rem;
         border: 1px solid #000000;
         border-radius: 1rem;
         padding: 1rem;
+        background: none;
+        margin-bottom: 1rem;
+    }
+
+    .competition-container:hover {
+        cursor: pointer;
     }
 
     .competition-container:not(:last-child) {
-        margin-bottom: 1rem;
+        margin-right: 1rem;
     }
 
     .competition-emblem {
         height: 5rem;
         width: auto;
+    }
+
+    .competition-name {
+        margin-bottom: 0;
     }
 </style>
