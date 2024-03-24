@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { push } from 'svelte-spa-router';
 
     type Competition = {
         id: number;
@@ -53,7 +54,10 @@
         <p>Loading...</p>
     {/if}
     {#each competitions as competition}
-        <div class="competition-container">
+        <button
+            on:click={() => push(`/standings/${competition.code}`)}
+            class="competition-container"
+        >
             <img
                 src={competition.emblem}
                 alt="{competition.name} emblem"
